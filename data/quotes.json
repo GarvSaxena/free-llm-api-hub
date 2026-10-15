@@ -195,7 +195,7 @@
    "kind": "sentence",
    "text": "Modal will not, except with Customer's prior written consent: (i) train any AI model using Customer Data, or (ii) export Customer Data into, or cause Customer Data to be ingested by, large language models.",
    "source_url": "https://modal.com/legal/terms",
-   "read_on": "2026-10-15",
+   "read_on": "2026-10-16",
    "lang": "en",
    "method": "html-text-v1: page requested in English, tags removed, character references decoded, white space collapsed",
    "page_sha256": "246080092abebcd77646fc52b62b9e966cda34106c6eacc52ed0ea0532d86b83"
@@ -204,9 +204,31 @@
    "id": "modal.note_passage.1",
    "slug": "modal",
    "kind": "note_passage",
+   "text": "solely for Customer's internal business",
+   "source_url": "https://modal.com/legal/terms",
+   "read_on": "2026-10-16",
+   "lang": "en",
+   "method": "html-text-v1: page requested in English, tags removed, character references decoded, white space collapsed",
+   "page_sha256": "246080092abebcd77646fc52b62b9e966cda34106c6eacc52ed0ea0532d86b83"
+  },
+  {
+   "id": "modal.note_passage.2",
+   "slug": "modal",
+   "kind": "note_passage",
+   "text": "No-Fee Use",
+   "source_url": "https://modal.com/legal/terms",
+   "read_on": "2026-10-16",
+   "lang": "en",
+   "method": "html-text-v1: page requested in English, tags removed, character references decoded, white space collapsed",
+   "page_sha256": "246080092abebcd77646fc52b62b9e966cda34106c6eacc52ed0ea0532d86b83"
+  },
+  {
+   "id": "modal.note_passage.3",
+   "slug": "modal",
+   "kind": "note_passage",
    "text": "may be subject to certain additional restrictions, limitations and differing terms",
    "source_url": "https://modal.com/legal/terms",
-   "read_on": "2026-10-15",
+   "read_on": "2026-10-16",
    "lang": "en",
    "method": "html-text-v1: page requested in English, tags removed, character references decoded, white space collapsed",
    "page_sha256": "246080092abebcd77646fc52b62b9e966cda34106c6eacc52ed0ea0532d86b83"
