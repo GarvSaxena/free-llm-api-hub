@@ -753,7 +753,8 @@
       "is_text_llm": true,
       "model_tier": null,
       "verified": true,
-      "last_verified": "2026-10-08"
+      "last_verified": "2026-10-08",
+      "data_policy": {"trains_on_prompts":null,"retention":"Not stored or retained; processed only transiently and immediately discarded","source":"https://www.arliai.com/privacy","checked":"2026-10-15"}
     },
     {
       "slug": "ollama-cloud",
