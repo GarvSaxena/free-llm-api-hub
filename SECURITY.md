@@ -9,7 +9,7 @@ If you find a security issue — for example, a way the build/validation scripts
 - Use **[GitHub's private vulnerability reporting](https://github.com/pacocartones/free-llm-api-hub/security/advisories/new)** (Security → Report a vulnerability), **or**
 - Email **admin@freellmapihub.com** (alternative to the private report above; please don't put exploit details in a public issue).
 
-Please **don't** open a public issue for a genuine vulnerability until it's been addressed. We aim to acknowledge reports within a few days.
+Please **don't** open a public issue for a genuine vulnerability until it's been addressed. We aim to acknowledge reports within 48 hours (best effort).
 
 ## Scope
 
