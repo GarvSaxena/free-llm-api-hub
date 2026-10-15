@@ -754,7 +754,7 @@
       "model_tier": null,
       "verified": true,
       "last_verified": "2026-10-08",
-      "data_policy": {"trains_on_prompts":null,"retention":"Not stored or retained; processed only transiently and immediately discarded","source":"https://www.arliai.com/privacy","checked":"2026-10-15"}
+      "data_policy": {"trains_on_prompts":null,"retention":"Not stored or retained; processed only transiently and immediately discarded","source":"https://www.arliai.com/privacy","checked":"2026-10-15","quote":"Consistent with our zero-log approach, we do not store, retain, or have access to your prompts, inputs, or generated outputs at any time. This data is processed only transiently to return a response to you and is immediately discarded.","note":"The page covers retention only; it has no sentence about training, so training stays not confirmed. Prompts and outputs are discarded immediately, while usage metadata may be retained for up to 60 days."}
     },
     {
       "slug": "ollama-cloud",
