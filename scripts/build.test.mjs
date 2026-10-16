@@ -2140,7 +2140,7 @@ test('data_policy lot 4: the 13 providers that say they do not train were read f
   for (const p of data.providers.filter((q) => q.data_policy && q.data_policy.trains_on_prompts !== false)) {
     // rows that say it may train were read for the plan later (lots 2, 3, 5 and the correction of the absence claims): true where the
     // clause names the free users or free usage (AssemblyAI, Voyage AI), false where it does not
-    const READ = { assemblyai: true, 'voyage-ai': true, elevenlabs: false, cartesia: false, 'retell-ai': false, deepgram: false, 'arli-ai': false, 'sarvam-ai': false };
+    const READ = { assemblyai: true, 'voyage-ai': true, elevenlabs: false, cartesia: false, 'retell-ai': false, deepgram: false, 'arli-ai': false, 'sarvam-ai': false, poolside: false };
     if (p.slug in READ) assert.equal(p.data_policy.plan_named, READ[p.slug], `${p.slug}: plan_named as read`);
     else assert.equal(p.data_policy.plan_named, undefined, `${p.slug}: not read for the plan yet, so no value is written`);
   }
@@ -2175,6 +2175,24 @@ test('data_policy lot 6: at least 26 of 68, AI21 says it does not train, with th
   assert.ok(md.split('\n').some((l) => l.startsWith('| **[AI21')), 'AI21 is in the no-training collection');
 });
 
+test('data_policy lot 7: 29 of 68, Poolside may train on your Content by its Terms of Use unless you opt out (#341)', () => {
+  const data = JSON.parse(readFileSync(DATA, 'utf8'));
+  assert.equal(data.providers.filter((p) => p.data_policy).length, 29, 'the count of covered providers');
+  const dp = data.providers.find((p) => p.slug === 'poolside').data_policy;
+  assert.equal(dp.trains_on_prompts, true, 'may train, even though you can opt out');
+  assert.equal(dp.retention, null, 'the terms state no retention period for Content');
+  assert.equal(dp.source, 'https://poolside.ai/legal/eula', 'the Terms of Use, which cover the APIs and Poolside Platform');
+  assert.equal(dp.checked, '2026-10-15'); assert.equal(dp.plan_named, false);
+  assert.equal(dp.quote, 'We may use your Content to provide, maintain, improve, and develop the Products and other Poolside offerings, including training our models, unless you opt-out.', 'section 4, literal');
+  assert.match(dp.note, /if you give Feedback or it is flagged for safety review/, 'the exceptions to the opt-out are in the note');
+  assert.ok(dp.quote.length <= 400 && dp.note.length <= 300);
+  const registry = JSON.parse(readFileSync(join(ROOT, 'data/quotes.json'), 'utf8'));
+  assert.ok(registry.entries.some((e) => e.slug === 'poolside' && e.kind === 'sentence' && e.text === dp.quote), 'the quote has its register entry');
+  const md = readFileSync(join(ROOT, 'collections/no-training.md'), 'utf8');
+  assert.ok(!md.split('\n').some((l) => l.startsWith('| **[Poolside')), 'Poolside is not in the no-training collection');
+  assert.match(readFileSync(join(ROOT, 'site/data-policy/index.html'), 'utf8'), /Poolside/, 'the data-policy page lists Poolside');
+});
+
 test('correction of the absence claims: no note says the page names no plan unless the page has none of the four words, and Voyage AI names free usage', () => {
   const data = JSON.parse(readFileSync(DATA, 'utf8'));
   const dpOf = (slug) => data.providers.find((p) => p.slug === slug).data_policy;
@@ -2186,7 +2204,7 @@ test('correction of the absence claims: no note says the page names no plan unle
 
 test('data_policy: Arli AI, from a contributor, states retention only: trains stays not confirmed, the quote is literal and has its register entry', () => {
   const data = JSON.parse(readFileSync(DATA, 'utf8'));
-  assert.equal(data.providers.filter((p) => p.data_policy).length, 28, 'the count of covered providers');
+  assert.ok(data.providers.filter((p) => p.data_policy).length >= 27, 'Arli AI raised the covered providers to 27; later rows only add (the exact count is pinned by the latest test)');
   const dp = data.providers.find((p) => p.slug === 'arli-ai').data_policy;
   assert.equal(dp.trains_on_prompts, null, 'the policy says nothing about training: not stated is not no');
   assert.match(dp.retention, /processed transiently and immediately discarded/); assert.equal(dp.plan_named, false);
