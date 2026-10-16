@@ -2134,7 +2134,7 @@ test('data_policy lot 4: the 13 providers that say they do not train were read f
   assert.ok(falses.length >= 14, 'the 13 read for the plan in lot 4, Runware (lot 5) and the later ones: every one carries plan_named false');
   for (const p of falses) {
     assert.equal(p.data_policy.plan_named, false, `${p.slug}: read for the plan, not named`);
-    assert.equal(p.data_policy.checked, '2026-10-15', `${p.slug}: read date`);
+    assert.ok(p.data_policy.checked >= '2026-10-15', `${p.slug}: read on or after the lot 4 day (a later re-read of a row is fine)`);
     assert.ok(p.data_policy.note && p.data_policy.note.length <= 300, `${p.slug}: note within 300 characters`);
   }
   for (const p of data.providers.filter((q) => q.data_policy && q.data_policy.trains_on_prompts !== false)) {
